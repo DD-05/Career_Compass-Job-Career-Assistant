@@ -1,0 +1,809 @@
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #FF6B9D 0%, #FFC371 100%);
+    --secondary-gradient: linear-gradient(135deg, #A8E6CF 0%, #56CCF2 100%);
+    --success-gradient: linear-gradient(135deg, #84FAB0 0%, #8FD3F4 100%);
+    --warning-gradient: linear-gradient(135deg, #FFD89B 0%, #FF9A8B 100%);
+    --danger-gradient: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
+    --info-gradient: linear-gradient(135deg, #A1C4FD 0%, #C2E9FB 100%);
+    --pearl-gradient: linear-gradient(135deg, #FFF6F9 0%, #E8F5E9 100%);
+}
+
+/* ==================== BACKGROUND ==================== */
+.stApp {
+    background: linear-gradient(135deg, #FFF0F5 0%, #E8F5E9 50%, #FFF9E6 100%);
+}
+
+/* ==================== FLOATING CHATBOT BUTTON (HOME PAGE ONLY) ==================== */
+.floating-chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 35px rgba(255, 107, 157, 0.5);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: pulse-glow 2.5s infinite;
+}
+
+.floating-chat-btn:hover {
+    transform: scale(1.15) translateY(-8px) rotate(10deg);
+    box-shadow: 0 15px 45px rgba(255, 107, 157, 0.8);
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 10px 35px rgba(255, 107, 157, 0.5);
+    }
+    50% {
+        box-shadow: 0 10px 50px rgba(255, 107, 157, 0.9), 0 0 0 15px rgba(255, 107, 157, 0.1);
+    }
+}
+
+/* ==================== BACK TO HOME BUTTON ==================== */
+.back-to-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--secondary-gradient);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(168, 230, 207, 0.5);
+    transition: all 0.3s ease;
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.back-to-home:hover {
+    transform: translateX(-8px) scale(1.05);
+    box-shadow: 0 10px 35px rgba(168, 230, 207, 0.7);
+}
+
+.back-to-home svg {
+    transition: transform 0.3s ease;
+}
+
+.back-to-home:hover svg {
+    transform: translateX(-4px);
+}
+
+/* ==================== CARDS & CONTAINERS ==================== */
+.strength-item {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #E8F8F5 0%, #D4F1F4 100%);
+    border-left: 6px solid #56CCF2;
+    border-radius: 20px;
+    margin: 15px 0;
+    box-shadow: 0 5px 20px rgba(86, 204, 242, 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.5s ease;
+}
+
+.strength-item:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(86, 204, 242, 0.4);
+    border-left-width: 8px;
+}
+
+.critical-item {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #FFE5EC 0%, #FFDEE9 100%);
+    border-left: 6px solid #FF9A9E;
+    border-radius: 20px;
+    margin: 15px 0;
+    box-shadow: 0 5px 20px rgba(255, 154, 158, 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.5s ease;
+}
+
+.critical-item:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(255, 154, 158, 0.4);
+    border-left-width: 8px;
+}
+
+.medium-item {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 100%);
+    border-left: 6px solid #FFD89B;
+    border-radius: 20px;
+    margin: 15px 0;
+    box-shadow: 0 5px 20px rgba(255, 216, 155, 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.5s ease;
+}
+
+.medium-item:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(255, 216, 155, 0.4);
+    border-left-width: 8px;
+}
+
+.suggestion-item {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+    border-left: 6px solid #CE93D8;
+    border-radius: 20px;
+    margin: 15px 0;
+    box-shadow: 0 5px 20px rgba(206, 147, 216, 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.5s ease;
+}
+
+.suggestion-item:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(206, 147, 216, 0.4);
+    border-left-width: 8px;
+}
+
+/* ==================== SKILL BADGES ==================== */
+.skill-badge {
+    display: inline-block;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFE082 100%);
+    border-radius: 15px;
+    margin: 10px 8px;
+    box-shadow: 0 4px 15px rgba(255, 216, 155, 0.3);
+    font-weight: 600;
+    color: #F57C00;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.skill-badge:hover {
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 8px 25px rgba(255, 216, 155, 0.5);
+    border-color: #FFD89B;
+    background: linear-gradient(135deg, #FFE082 0%, #FFF9C4 100%);
+}
+
+/* ==================== JOB MATCH SCORE CARDS ==================== */
+.score-card {
+    text-align: center;
+    padding: 40px 30px;
+    border-radius: 30px;
+    color: white;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.score-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    50% { transform: translate(0%, 0%) scale(1.5); opacity: 1; }
+}
+
+.score-strong {
+    background: var(--success-gradient);
+    box-shadow: 0 15px 45px rgba(132, 250, 176, 0.5);
+}
+
+.score-strong:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 55px rgba(132, 250, 176, 0.7);
+}
+
+.score-moderate {
+    background: var(--warning-gradient);
+    box-shadow: 0 15px 45px rgba(255, 216, 155, 0.5);
+}
+
+.score-moderate:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 55px rgba(255, 216, 155, 0.7);
+}
+
+.score-weak {
+    background: var(--danger-gradient);
+    box-shadow: 0 15px 45px rgba(255, 154, 158, 0.5);
+}
+
+.score-weak:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 55px rgba(255, 154, 158, 0.7);
+}
+
+/* ==================== BUTTONS ==================== */
+.stButton button {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border: none !important;
+    padding: 16px 32px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    box-shadow: 0 6px 25px rgba(255, 107, 157, 0.4) !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton button:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 35px rgba(255, 107, 157, 0.6) !important;
+}
+
+.stButton button:active {
+    transform: translateY(-2px) !important;
+}
+
+/* Secondary Button Style */
+.stButton button[kind="secondary"] {
+    background: var(--secondary-gradient) !important;
+    box-shadow: 0 6px 25px rgba(168, 230, 207, 0.4) !important;
+}
+
+.stButton button[kind="secondary"]:hover {
+    box-shadow: 0 12px 35px rgba(168, 230, 207, 0.6) !important;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease;
+}
+
+/* ==================== STREAMLIT OVERRIDES ==================== */
+
+/* Style file uploader */
+.stFileUploader {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.15);
+    border: 2px dashed #FFB6C1;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader:hover {
+    border-color: #FF6B9D;
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.25);
+}
+
+/* Style text inputs */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea {
+    border-radius: 15px !important;
+    border: 2px solid #FFE0E9 !important;
+    padding: 14px 18px !important;
+    transition: all 0.3s ease !important;
+    background: white !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+    border-color: #FF6B9D !important;
+    box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.15) !important;
+}
+
+/* Style metrics */
+.stMetric {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.stMetric:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Style expanders */
+.streamlit-expanderHeader {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border-radius: 15px !important;
+    padding: 18px 24px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.streamlit-expanderHeader:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Style tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    border-radius: 15px;
+    padding: 12px 24px;
+    color: #666;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+}
+
+/* Style progress bars */
+.stProgress > div > div > div > div {
+    background: var(--primary-gradient) !important;
+    border-radius: 10px !important;
+}
+
+/* Style success/info/warning/error messages */
+.stSuccess {
+    background: linear-gradient(135deg, #E8F8F5 0%, #D4F1F4 100%) !important;
+    border-left: 5px solid #56CCF2 !important;
+    border-radius: 15px !important;
+    padding: 20px !important;
+}
+
+.stInfo {
+    background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%) !important;
+    border-left: 5px solid #CE93D8 !important;
+    border-radius: 15px !important;
+    padding: 20px !important;
+}
+
+.stWarning {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 100%) !important;
+    border-left: 5px solid #FFD89B !important;
+    border-radius: 15px !important;
+    padding: 20px !important;
+}
+
+.stError {
+    background: linear-gradient(135deg, #FFE5EC 0%, #FFDEE9 100%) !important;
+    border-left: 5px solid #FF9A9E !important;
+    border-radius: 15px !important;
+    padding: 20px !important;
+}
+
+/* ==================== CHAT MESSAGES ==================== */
+.stChatMessage {
+    background: white !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    margin: 15px 0 !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.stChatMessage[data-testid="user-message"] {
+    background: linear-gradient(135deg, #FFE5EC 0%, #FFDEE9 100%) !important;
+}
+
+.stChatMessage[data-testid="assistant-message"] {
+    background: linear-gradient(135deg, #E8F8F5 0%, #D4F1F4 100%) !important;
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFF0F5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 10px;
+    border: 3px solid #FFF0F5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #FFC371 0%, #FF6B9D 100%);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .floating-chat-btn {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .back-to-home {
+        top: 15px;
+        left: 15px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .score-card {
+        padding: 30px 20px;
+    }
+    
+    .skill-badge {
+        padding: 10px 15px;
+        margin: 8px 5px;
+    }
+    
+    .strength-item, .critical-item, .medium-item, .suggestion-item {
+        padding: 15px 18px;
+    }
+}
+
+/* ==================== LOADING SPINNER ==================== */
+.loading-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 107, 157, 0.3);
+    border-radius: 50%;
+    border-top-color: #FF6B9D;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==================== TITLE ANIMATIONS ==================== */
+h1, h2, h3 {
+    animation: fadeInUp 0.6s ease;
+}
+
+/* ==================== CARD HOVER EFFECTS ==================== */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ==================== GLASSMORPHISM EFFECT ==================== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== GRADIENT TEXT ==================== */
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+/* ==================== PIE CHART ENHANCEMENTS ==================== */
+
+/* Make Plotly charts larger and more visible */
+.js-plotly-plot {
+    min-height: 600px !important;
+    margin: 30px 0 !important;
+}
+
+.plotly .main-svg {
+    background: white !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+    padding: 20px !important;
+}
+
+/* Enhance pie chart labels */
+.plotly text {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Make pie chart legend more visible */
+.plotly .legend {
+    font-size: 15px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 10px !important;
+    padding: 15px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ==================== CHATBOT & QNA TEXT VISIBILITY ==================== */
+
+/* Ensure all text in chatbot is visible */
+.stChatMessage p,
+.stChatMessage div,
+.stChatMessage span,
+.stChatMessage li,
+.stChatMessage strong {
+    color: #2c3e50 !important;
+}
+
+/* Chatbot user messages */
+.stChatMessage[data-testid="stChatMessageUser"] {
+    background: linear-gradient(135deg, #FFE5EC 0%, #FFDEE9 100%) !important;
+}
+
+.stChatMessage[data-testid="stChatMessageUser"] p {
+    color: #c2185b !important;
+    font-weight: 500 !important;
+}
+
+/* Chatbot assistant messages */
+.stChatMessage[data-testid="stChatMessageAssistant"] {
+    background: linear-gradient(135deg, #E8F8F5 0%, #D4F1F4 100%) !important;
+}
+
+.stChatMessage[data-testid="stChatMessageAssistant"] p {
+    color: #0d47a1 !important;
+}
+
+/* HTML formatted responses in chatbot */
+.stChatMessage h2,
+.stChatMessage h3,
+.stChatMessage h4 {
+    margin: 10px 0 !important;
+}
+
+.stChatMessage ul {
+    padding-left: 25px !important;
+    margin: 10px 0 !important;
+}
+
+.stChatMessage li {
+    margin: 8px 0 !important;
+    line-height: 1.6 !important;
+}
+
+.stChatMessage strong {
+    font-weight: 700 !important;
+}
+
+/* ==================== Q&A PAGE ENHANCEMENTS ==================== */
+
+/* Q&A Expanders */
+.streamlit-expanderHeader {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 18px 24px !important;
+    border-radius: 15px !important;
+    font-size: 16px !important;
+}
+
+.streamlit-expanderHeader:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.streamlit-expanderContent {
+    background-color: #ffffff !important;
+    padding: 20px !important;
+    border-radius: 0 0 15px 15px !important;
+}
+
+/* Q&A Question boxes */
+.qna-question {
+    background: linear-gradient(135deg, #e7f3ff 0%, #cfe2ff 100%);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    border-left: 5px solid #2196f3;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+}
+
+.qna-question p,
+.qna-question strong {
+    color: #1565c0 !important;
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+}
+
+.qna-question strong {
+    font-size: 18px !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+}
+
+/* Q&A Answer boxes */
+.qna-answer {
+    background: linear-gradient(135deg, #d4edda 0%, #b8e0c7 100%);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    border-left: 5px solid #28a745;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+}
+
+.qna-answer p,
+.qna-answer strong {
+    color: #155724 !important;
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+}
+
+.qna-answer strong {
+    font-size: 18px !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+}
+
+/* ==================== SKILL GAP ANALYSIS ENHANCEMENTS ==================== */
+
+/* Skill comparison table */
+.stDataFrame {
+    background: white !important;
+    border-radius: 15px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+}
+
+.stDataFrame table {
+    font-size: 15px !important;
+}
+
+.stDataFrame th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+}
+
+.stDataFrame td {
+    padding: 12px 15px !important;
+    color: #2c3e50 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.stDataFrame tr:hover {
+    background-color: #f8f9fa !important;
+}
+
+/* Skill badges - make them pop more */
+.skill-badge {
+    display: inline-block;
+    padding: 12px 20px !important;
+    background: linear-gradient(135deg, #FFD89B 0%, #FFC371 100%) !important;
+    border-radius: 15px !important;
+    margin: 8px 6px !important;
+    box-shadow: 0 4px 15px rgba(255, 216, 155, 0.4) !important;
+    font-weight: 600 !important;
+    color: #F57C00 !important;
+    font-size: 15px !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.skill-badge:hover {
+    transform: translateY(-5px) scale(1.08) !important;
+    box-shadow: 0 8px 25px rgba(255, 216, 155, 0.6) !important;
+    border-color: #FFC371 !important;
+    background: linear-gradient(135deg, #FFC371 0%, #FFD89B 100%) !important;
+}
+
+/* ==================== JOB MATCH SCORE VISIBILITY ==================== */
+
+/* Make job match scores more prominent */
+.score-card {
+    min-height: 200px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.score-card h1 {
+    font-size: 72px !important;
+    margin: 20px 0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.score-card p {
+    font-size: 24px !important;
+    margin: 10px 0 !important;
+}
+
+/* ==================== LOADING STATES ==================== */
+
+/* Better loading indicators */
+.stSpinner > div {
+    border-color: #FF6B9D !important;
+    border-top-color: transparent !important;
+}
+
+/* ==================== INFO/SUCCESS/WARNING/ERROR BOXES ==================== */
+
+/* Make alerts more visible */
+.stAlert {
+    padding: 20px !important;
+    border-radius: 15px !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stAlert p {
+    color: inherit !important;
+    margin: 0 !important;
+}
+
+/* ==================== RESPONSIVE ENHANCEMENTS ==================== */
+
+@media (max-width: 768px) {
+    .js-plotly-plot {
+        min-height: 400px !important;
+    }
+    
+    .skill-badge {
+        padding: 10px 15px !important;
+        font-size: 14px !important;
+        margin: 6px 4px !important;
+    }
+    
+    .qna-question,
+    .qna-answer {
+        padding: 15px !important;
+    }
+    
+    .score-card h1 {
+        font-size: 48px !important;
+    }
+}
