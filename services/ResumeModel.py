@@ -1,4 +1,3 @@
-#  ------------- old claude version without ui ----------
 import os
 import json
 import re
@@ -255,91 +254,6 @@ def recommend_courses_for_required_skills(required_skills: set, courses_mapping:
         ("The Web Developer Bootcamp (Udemy)", "https://www.udemy.com/course/the-web-developer-bootcamp")
     ]
 
-# -------------------------
-# LangGraph/Gemini resume analysis
-# -------------------------
-# def analyze_resume_langgraph(resume_text: str, role: str, job_description: str = ""):
-#     if resume_agent is None:
-#         raise RuntimeError("Resume analysis agent unavailable. Check GEMINI_API_KEY & dependencies.")
-
-#     MAX_CHARS = 10000
-#     if len(resume_text) > MAX_CHARS:
-#         resume_text = resume_text[:MAX_CHARS]
-
-#     system_prompt = """
-#     You are an expert resume reviewer, career assistant, and job-matching specialist.
-#     Your task is to produce ONE combined JSON output containing:
-#     1. Resume Review
-#     2. Category Scores
-#     3. Strengths & Weaknesses
-#     4. Suggestions
-#     5. Skill Extraction
-#     6. Skill Gap Analysis
-#     7. Job Match Score + Label + Actionable Tip
-
-#     Return only valid JSON, no explanations.
-#     """
-
-#     human_prompt = f"""
-#     Resume:
-#     {resume_text}
-
-#     Target Role: {role}
-
-#     Job Description:
-#     {job_description}
-
-#     REQUIRED JSON OUTPUT:
-#     {{
-#       "Overall_Score": int,
-#       "Category_Scores": {{
-#         "Presentation & Format": int,
-#         "Skills": int,
-#         "Projects": int,
-#         "Education": int,
-#         "Experience": int,
-#         "Certifications": int,
-#         "Achievements": int
-#       }},
-#       "Strengths": [],
-#       "Weaknesses": {{
-#         "Critical": [],
-#         "Medium": [],
-#         "Low": []
-#       }},
-#       "Suggestions": {{
-#         "Critical": [],
-#         "Medium": [],
-#         "Low": []
-#       }},
-#       "resume_skills": [],
-#       "job_required_skills": [],
-#       "skills_to_improve": [],
-#       "job_match_score": float,
-#       "job_match_label": "Strong Match / Moderate Match / Weak Match",
-#       "job_match_tip": ""
-#     }}
-#     """
-
-#     stream = resume_agent.stream(
-#         {"messages": [SystemMessage(content=system_prompt), HumanMessage(content=human_prompt)]},
-#         {"configurable": {"thread_id": THREAD_ID}}
-#     )
-
-#     final_message = None
-#     for chunk in stream:
-#         if "agent" in chunk:
-#             final_message = chunk["agent"]["messages"][0].content
-
-#     if final_message is None:
-#         return {"error": "No response from model."}
-
-#     cleaned = re.sub(r"```json|```", "", final_message).strip()
-
-#     try:
-#         return json.loads(cleaned)
-#     except json.JSONDecodeError:
-#         return {"error": "JSON parsing failed", "raw_output": final_message}
 @rate_limit
 @cached
 def analyze_resume_langgraph(resume_text: str, role: str, job_description: str = ""):
@@ -464,52 +378,6 @@ def analyze_resume_langgraph(resume_text: str, role: str, job_description: str =
             )[:5]
         }
 
-
-# -------------------------------------------------------
-# NEW â€” Job Match Score + Actionable Tip from JD
-# -------------------------------------------------------
-# def analyze_job_fit(resume_text, job_description):
-#     prompt = f"""
-#     You are an AI career assistant and you must evaluate job readiness ONLY based on the resume and job description.
-
-#     Resume:
-#     {resume_text}
-
-#     Job Description:
-#     {job_description}
-
-#     Task:
-#     1. Give a Match Score on a scale of 0 to 10.
-#     2. Give a Match Label:
-#         - Strong Match (8.0 - 10)
-#         - Moderate Match (5.0 - 7.9)
-#         - Weak Match (0 - 4.9)
-#     3. Provide ONE very specific, actionable tip to strengthen the application.
-
-#     Format STRICTLY as JSON:
-#     {{
-#         "match_score": float,
-#         "match_label": "Strong Match / Moderate Match / Weak Match",
-#         "actionable_tip": "..."
-#     }}
-#     """
-
-#     from langchain_google_genai import ChatGoogleGenerativeAI
-#     import os, json, re
-
-#     llm = ChatGoogleGenerativeAI(
-#         model="gemini-2.5-flash-lite",
-#         google_api_key=os.getenv("GEMINI_API_KEY"),
-#         temperature=0.2
-#     )
-
-#     response = llm.invoke(prompt).content
-#     cleaned = re.sub(r"^```json|```$", "", response.strip(), flags=re.MULTILINE)
-
-#     try:
-#         return json.loads(cleaned)
-#     except Exception:
-#         return {"error": "Parsing failed", "raw_output": response}
 @rate_limit
 @cached
 def analyze_job_fit(resume_text, job_description):
