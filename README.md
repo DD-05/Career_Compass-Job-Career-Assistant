@@ -1,80 +1,96 @@
+# 🧭 Career Compass: AI-Powered Career Assistant & Mock Interviewer
 
-# AI Resume Analyzer
-
-This is an AI-powered mock interview application built with **Streamlit**. It allows you to get interviewed by an AI for your desired job role using voice input and provides interactive interview sessions.
-
----
-
-## ✅ Prerequisites
-
-- Python 3.8 or higher installed on your machine
-- A valid API key for your backend service
+**Career Compass** is an intelligent career acceleration platform built with **Streamlit** and powered by **Google Gemini**. The application provides an end-to-end interview and job-hunt preparation suite featuring a voice-driven interactive mock interviewer alongside an automated resume analyzer equipped with in-memory caching and request rate limiting.
 
 ---
 
-## ⚡ Setup Instructions
+## 🌟 Key Features
 
-### 1️⃣ Install Python
-
-Download and install Python from the official site:  
-https://www.python.org/downloads/
+* **Voice-Interactive Mock Interviews:** Simulates live technical and behavioral interviews using real-time Speech-to-Text (STT) input and dynamic Text-to-Speech (TTS) audio feedback.
+* **Context-Aware Questioning:** Dynamically generates targeted technical, situational, and behavioral interview questions mapped directly to specific job descriptions or roles.
+* **AI Resume Evaluation:** Analyzes uploaded resumes against target roles, pinpointing ATS formatting gaps, missing keywords, skill deficiencies, and core strengths.
+* **Optimized API Integration:** Implements built-in in-memory caching and token rate-limiting in the `ResumeModel` service layer to prevent quota exhaustion and reduce response latency.
+* **Modern Multi-Page UI:** Clean, responsive design crafted using Streamlit multi-page routing and custom modular CSS.
 
 ---
 
-### 2️⃣ Create a Virtual Environment
+## 🏗️ Project Architecture
 
-```bash
-python -m venv .venv
+```text
+Career_Compass-Job-Career-Assistant/
+├── .env                     # Local environment variables (API keys)
+├── Home.py                  # Main application entry point & dashboard
+├── chatbot_component.py     # Stateful conversational engine & prompt flows
+├── requirements.txt         # Core dependencies and libraries
+├── style.css                # Custom UI styling overrides
+├── pages/                   # Multi-page routing (Mock Interview, Resume Analyzer)
+└── services/                # Business logic, caching, and rate limiting
 ```
 
-Activate the virtual environment:
+---
 
-- On Windows:  
+## ⚙️ Prerequisites
+
+* **Python:** Version 3.8 or higher
+* **Google Gemini API Key:** Accessible via [Google AI Studio](https://aistudio.google.com/)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/DD-05/Career_Compass-Job-Career-Assistant.git
+cd Career_Compass-Job-Career-Assistant
+```
+
+### 2. Create and Activate a Virtual Environment
+
+* **Windows:**
   ```bash
+  python -m venv .venv
   .venv\Scripts\activate
   ```
-- On macOS / Linux:  
+
+* **macOS / Linux:**
   ```bash
+  python3 -m venv .venv
   source .venv/bin/activate
   ```
 
----
-
-### 3️⃣ Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+### 4. Configure Environment Variables
 
-### 4️⃣ Configure API Key
-
-Create a `.env` file in the project root directory and add your API key:
+Create a `.env` file in the root directory:
 
 ```env
-GEMINI_API_KEY=YOUR_API_KEY
+GEMINI_API_KEY=your_actual_gemini_api_key_here
 ```
 
-Make sure to replace `YOUR_API_KEY` with your actual API key.
-
----
-
-## 🚀 Run the App
+### 5. Launch the Application
 
 ```bash
 streamlit run Home.py
 ```
 
+Access the application locally at `http://localhost:8501`.
+
 ---
 
-## ⚙️ Features
+## 🛠️ Tech Stack
 
-- Voice-based interview interaction
-- AI-generated interview questions
-- Real-time speech-to-text conversion
-- Text-to-speech responses
-- Clean interactive UI using Streamlit
+| Layer | Technologies |
+|---|---|
+| **Frontend & UI** | Streamlit, Custom CSS |
+| **LLM & NLP** | Google Gemini API, Prompt Engineering |
+| **Audio Processing** | Speech-to-Text (STT), Text-to-Speech (TTS) |
+| **Backend Utilities** | Python-dotenv, In-Memory Caching, Rate Limiting |
 
 ---
 
